@@ -10,11 +10,20 @@ const query = gql`
   }
 `
 
-const { result } = useQuery(query)
+const { data } = useAsyncQuery(query)
+
+const mutation = gql`mutation CreateUser {
+  createUser(newUser: {name: "test", age: 28})
+}`
+
+const { mutate } = useMutation(mutation)
+const result = await mutate()
+
 </script>
 
 <template>
   <div>
+    <p>{{ data }}</p>
     <p>{{ result }}</p>
   </div>
 </template>

@@ -55,5 +55,11 @@ export type GetUsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetUsersQuery = { __typename?: 'Query', users?: Array<{ __typename?: 'UserModel', age: number, id: string, name: string }> | null };
 
+export type CreateUserMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CreateUserMutation = { __typename?: 'Mutation', createUser: string };
+
 
 export const GetUsersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getUsers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"age"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<GetUsersQuery, GetUsersQueryVariables>;
+export const CreateUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateUser"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"newUser"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"name"},"value":{"kind":"StringValue","value":"test","block":false}},{"kind":"ObjectField","name":{"kind":"Name","value":"age"},"value":{"kind":"IntValue","value":"28"}}]}}]}]}}]} as unknown as DocumentNode<CreateUserMutation, CreateUserMutationVariables>;
