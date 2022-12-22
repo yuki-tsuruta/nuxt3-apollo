@@ -1,29 +1,19 @@
 <script lang="ts" setup>
+import { GetUsersDocument, CreateUserDocument } from '.types/gql/graphql';
 
-const query = gql`
-  query getUsers {
-    users {
-      age
-      id
-      name
-    }
-  }
-`
+const { result } = useQuery(GetUsersDocument)
+result.value?.users?.map((u) => {
+  u.age
+})
 
-const { data } = useAsyncQuery(query)
-
-const mutation = gql`mutation CreateUser {
-  createUser(newUser: {name: "test", age: 28})
-}`
-
-const { mutate } = useMutation(mutation)
-const result = await mutate()
+const { mutate } = useMutation(CreateUserDocument)
+const newUser = await mutate()
 
 </script>
 
 <template>
   <div>
-    <p>{{ data }}</p>
     <p>{{ result }}</p>
+    <p>{{ newUser }}</p>
   </div>
 </template>
